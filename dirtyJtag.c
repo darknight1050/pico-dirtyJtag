@@ -180,6 +180,11 @@ int main()
     board_init();
     usb_serial_init();
     tusb_init();
+    
+    const uint jtagenb = 4;
+    gpio_init(jtagenb);
+    gpio_set_dir(jtagenb, GPIO_OUT);
+    gpio_put(jtagenb, 1);
 
     led_init( LED_INVERTED, PIN_LED_TX, PIN_LED_RX, PIN_LED_ERROR );
 #if ( CDC_UART_INTF_COUNT > 0 )
